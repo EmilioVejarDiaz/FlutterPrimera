@@ -1,3 +1,4 @@
+import 'package:actividad_02/modules/auth/screens/recuperar_contrase%C3%B1a.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -90,7 +91,6 @@ class _LoginState extends State<Login> {
                           print('Datos -> ${_emailController.text} ${_passwordController.text}');
                         }
                       },
-                      child: const Text('Iniciar sesión'),
                       style: OutlinedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 134, 10, 10),
                         foregroundColor: Colors.white,
@@ -98,14 +98,25 @@ class _LoginState extends State<Login> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
+                      child: const Text('Iniciar sesión'),
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 20.0),
-                  child: SizedBox(
-                    child: Text('Recuperar contraseña'),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const RecuperarContrasena()
+                        ),
+                      );
+                    },
+                    child: const Text('Recuperar contraseña',
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color.fromARGB(255, 0, 0, 0),),
                   ),
+                ),
                 ),
               ],
             ),
