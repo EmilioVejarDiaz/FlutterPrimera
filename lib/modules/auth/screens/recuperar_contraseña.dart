@@ -1,4 +1,4 @@
-import 'package:actividad_02/modules/auth/screens/validar_contrasena.dart'; // Asegúrate de que esta ruta sea correcta
+import 'package:actividad_02/modules/auth/screens/validar_contrasena.dart';
 import 'package:flutter/material.dart';
 
 class RecuperarContrasena extends StatefulWidget {

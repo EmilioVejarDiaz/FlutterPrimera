@@ -1,5 +1,7 @@
-import 'package:actividad_02/modules/auth/screens/recuperar_contrase%C3%B1a.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'recuperar_contrase%C3%B1a.dart';
+import 'registrar.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,7 +14,6 @@ class _LoginState extends State<Login> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _isObscure = true;
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String? _validateEmail(String? value) {
@@ -33,6 +34,32 @@ class _LoginState extends State<Login> {
     }
     return null;
   }
+
+Future<void> _login() async {
+  try {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    Navigator.pushReplacementNamed(context, '/perfil');
+  } on FirebaseAuthException catch (e) {
+    String message = '';
+    if (e.code == 'user-not-found') {
+      message = 'No existe ningún usuario con ese correo.';
+    } else if (e.code == 'wrong-password') {
+      message = 'La contraseña es incorrecta.';
+    } else {
+      message = 'Error al iniciar sesión: ${e.message}';
+    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Ocurrió un error inesperado: $e')),
+    );
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +116,7 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print(
-                              'Datos -> ${_emailController.text} ${_passwordController.text}');
+                          _login();
                         }
                       },
                       style: OutlinedButton.styleFrom(

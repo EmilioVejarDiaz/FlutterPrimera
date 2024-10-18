@@ -13,19 +13,27 @@ class Perfil extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           SizedBox(
+          SizedBox(
             width: double.infinity,
             height: 48.0,
-            child: ElevatedButton(
-              onPressed: () async {
-                // Cerrar sesión
-                await FirebaseAuth.instance.signOut();
-                // Navegar a la pantalla de inicio de sesión si el widget sigue montado
-                if (context.mounted) {
-                  Navigator.pushReplacementNamed(context, '/login');
-                }
-              },
-              child: const Text('Cerrar sesión'),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () async {
+                  await FirebaseAuth.instance.signOut();
+                  if (context.mounted) {
+                    Navigator.pushReplacementNamed(context, '/login');
+                  }
+                },
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 134, 10, 10),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+                child: const Text('Cerrar sesión'),
+              ),
             ),
           ),
         ],
