@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "249582158696",
+    "project_id": "flutterpropia",
+    "storage_bucket": "flutterpropia.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:249582158696:android:b8336939b4a42110a50cdd",
+        "android_client_info": {
+          "package_name": "com.example.actividad_02"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF854tL314OrKdKmbIiMHg6n6FlKDay3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

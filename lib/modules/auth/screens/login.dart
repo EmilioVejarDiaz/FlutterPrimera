@@ -76,7 +76,8 @@ class _LoginState extends State<Login> {
                           _isObscure = !_isObscure;
                         });
                       },
-                      icon: Icon(_isObscure ? Icons.visibility : Icons.visibility_off),
+                      icon: Icon(
+                          _isObscure ? Icons.visibility : Icons.visibility_off),
                     ),
                   ),
                 ),
@@ -88,7 +89,8 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print('Datos -> ${_emailController.text} ${_passwordController.text}');
+                          print(
+                              'Datos -> ${_emailController.text} ${_passwordController.text}');
                         }
                       },
                       style: OutlinedButton.styleFrom(
@@ -105,18 +107,40 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.only(top: 20.0),
                   child: InkWell(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const RecuperarContrasena()
-                        ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const RecuperarContrasena()),
                       );
                     },
-                    child: const Text('Recuperar contraseña',
-                    style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: Color.fromARGB(255, 0, 0, 0),),
+                    child: const Text(
+                      'Recuperar contraseña',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Registrarse()),
+                      );
+                    },
+                    child: const Text(
+                      'Registrarse',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
